@@ -61,13 +61,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMouseLook.cs" />
     <Compile Include="Assets\Scripts\CompassUI.cs" />
+    <Compile Include="Assets\Scripts\CursorState.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\QuitButtons.cs" />
     <Compile Include="Assets\Scripts\Turn.cs" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/jack.malboeuf/Desktop/GitHub/UI/Compass/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/jack.malboeuf/Desktop/GitHub/UI/Compass/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/jack.malboeuf/Desktop/GitHub/UI/Compass/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

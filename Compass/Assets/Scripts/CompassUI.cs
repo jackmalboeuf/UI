@@ -7,27 +7,38 @@ public class CompassUI : MonoBehaviour
     [SerializeField]
     float numberOfPixelsNorthToNorth;
     [SerializeField]
-    Transform target;
-    [SerializeField]
     Transform objectTarget;
+    [SerializeField]
+    bool isMarker;
+
+    Transform player;
     Vector3 startPosition;
     float rationAngleToPixel;
     Canvas canvas;
+    Vector3 perp;
+    float dir;
 
     void Start()
     {
         startPosition = transform.position;
         rationAngleToPixel = numberOfPixelsNorthToNorth / 360f;
         canvas = transform.parent.parent.GetComponent<Canvas>();
+        player = GameObject.Find("Player").transform;
     }
 
     void Update()
     {
-        //Vector3 perp = Vector3.Cross(Vector3.forward, target.forward);
-        //float dir = Vector3.Dot(perp, Vector3.up);
-        Vector3 perp = Vector3.Cross(target.forward, objectTarget.forward);
-        float dir = Vector3.Dot(perp, Vector3.up);
-        //transform.position = startPosition + (new Vector3(Vector3.Angle(target.forward, Vector3.forward) * Mathf.Sign(dir) * rationAngleToPixel * canvas.transform.lossyScale.x, 0, 0));
-        transform.position = startPosition + (new Vector3(Vector3.Angle(target.forward, objectTarget.forward) * Mathf.Sign(dir) * rationAngleToPixel * canvas.transform.lossyScale.x, 0, 0));
+        if (isMarker)
+        {
+            perp = Vector3.Cross(player.forward, objectTarget.forward);
+            dir = Vector3.Dot(perp, Vector3.up);
+            transform.position = startPosition + (new Vector3(Vector3.Angle(player.forward, objectTarget.forward) * Mathf.Sign(dir) * rationAngleToPixel * canvas.transform.lossyScale.x, 0, 0));
+        }
+        else
+        {
+            perp = Vector3.Cross(Vector3.forward, player.forward);
+            dir = Vector3.Dot(perp, Vector3.up);
+            transform.position = startPosition + (new Vector3(Vector3.Angle(player.forward, Vector3.forward) * Mathf.Sign(dir) * rationAngleToPixel * canvas.transform.lossyScale.x, 0, 0));
+        }
     }
 }
